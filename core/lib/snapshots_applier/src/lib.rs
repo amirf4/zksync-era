@@ -355,6 +355,16 @@ impl<'a> SnapshotsApplier<'a> {
                 .map_err(|err| {
                     SnapshotsApplierError::db(err, "failed persisting initial recovery status")
                 })?;
+            storage_transaction
+                .pruning_dal()
+                .soft_prune_batches_range(
+                    this.applied_snapshot_status.l1_batch_number,
+                    this.applied_snapshot_status.miniblock_number,
+                )
+                .await
+                .map_err(|err| {
+                    SnapshotsApplierError::db(err, "failed persisting initial recovery status")
+                })?;
         }
         storage_transaction.commit().await.map_err(|err| {
             SnapshotsApplierError::db(err, "failed committing initial DB transaction")

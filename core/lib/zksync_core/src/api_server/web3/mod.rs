@@ -298,8 +298,8 @@ impl ApiServer {
         self,
         last_sealed_miniblock: SealedMiniblockNumber,
     ) -> anyhow::Result<RpcState> {
-        let mut storage = self.updaters_pool.access_storage_tagged("api").await?;
-        let start_info = BlockStartInfo::new(&mut storage).await?;
+        let storage = self.updaters_pool.access_storage_tagged("api").await?;
+        let start_info = BlockStartInfo::new().await?;
         drop(storage);
 
         let installed_filters = if self.config.filters_disabled {
