@@ -237,6 +237,10 @@ pub struct OptionalENConfig {
     /// 0 means that sealing is synchronous; this is mostly useful for performance comparison, testing etc.
     #[serde(default = "OptionalENConfig::default_miniblock_seal_queue_capacity")]
     pub miniblock_seal_queue_capacity: usize,
+    //
+    // pub pruning_chunk_size: u64,
+    //
+    // pub min_block_age_to_prune_hours: u64,
 }
 
 impl OptionalENConfig {
