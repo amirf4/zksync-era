@@ -237,10 +237,12 @@ pub struct OptionalENConfig {
     /// 0 means that sealing is synchronous; this is mostly useful for performance comparison, testing etc.
     #[serde(default = "OptionalENConfig::default_miniblock_seal_queue_capacity")]
     pub miniblock_seal_queue_capacity: usize,
-    //
-    // pub pruning_chunk_size: u64,
-    //
-    // pub min_block_age_to_prune_hours: u64,
+
+    #[serde(default = "OptionalENConfig::default_pruning_chunk_size")]
+    pub pruning_chunk_size: u32,
+
+    /// If set, l1 batches will be pruned after they are that long
+    pub l1_batch_age_to_prune_hours: Option<u64>,
 }
 
 impl OptionalENConfig {
@@ -344,6 +346,10 @@ impl OptionalENConfig {
     }
 
     const fn default_miniblock_seal_queue_capacity() -> usize {
+        10
+    }
+
+    const fn default_pruning_chunk_size() -> u32 {
         10
     }
 
