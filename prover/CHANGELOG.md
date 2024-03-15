@@ -1,5 +1,12 @@
 # Changelog
 
+## [12.2.0](https://github.com/matter-labs/zksync-era/compare/prover-v12.1.0...prover-v12.2.0) (2024-03-15)
+
+
+### Features
+
+* **commitment-generator:** `events_queue` shadow mode ([#1138](https://github.com/matter-labs/zksync-era/issues/1138)) ([9bb47fa](https://github.com/matter-labs/zksync-era/commit/9bb47faba73eecfddf706d1a5382caa733c7ed37))
+
 ## [12.1.0](https://github.com/matter-labs/zksync-era/compare/prover-v12.0.1...prover-v12.1.0) (2024-03-12)
 
 
